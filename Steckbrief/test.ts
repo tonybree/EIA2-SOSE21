@@ -1,2 +1,2 @@
-let a: number [] = [101, 102];
+let a = [7, true, "Hallo"];
 console.log(a);
