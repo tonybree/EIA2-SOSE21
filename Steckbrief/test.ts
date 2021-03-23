@@ -1,3 +1,1 @@
-let v: number = 1;
-v = v + 1;
-console.log(v);
+let a: any[] = [7, true, "Hallo"];
