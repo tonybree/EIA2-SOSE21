@@ -11,8 +11,10 @@ let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts"
     function initialisieren() {
         let harry: Subjekt = new Subjekt();
         harry.wort = "Harry";
-        subjekte[subjekte.size()] = harry;
+        subjekte[subjekte.length] = harry;
     }
+
+    initialisieren();
 
 console.log(subjekte[0].wort);
 console.log(praedikatStrings);

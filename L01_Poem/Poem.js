@@ -10,8 +10,9 @@ var Zufallsgedicht;
     function initialisieren() {
         let harry = new Subjekt();
         harry.wort = "Harry";
-        subjekte[subjekte.size()] = harry;
+        subjekte[subjekte.length] = harry;
     }
+    initialisieren();
     console.log(subjekte[0].wort);
     console.log(praedikatStrings);
     console.log(objektStrings);

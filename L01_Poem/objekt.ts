@@ -3,7 +3,7 @@ class Objekt {
     reimwoerter: Objekt[];
 
     addReimwort(_reimwort: Objekt): void {
-        this.reimwoerter [this.reimwoerter.size()] = this.reimwoerter;
+        this.reimwoerter [this.reimwoerter.length] = _reimwort;
     }
 
     
