@@ -23,6 +23,15 @@ class Satz {
         this.praedikat = _praedikat;
         this.objekt = _objekt;
     }
+    reimtSichAuf(_satz) {
+        for (let i = 0; i < this.objekt.reimwoerter.length; i++) {
+            let reimWort = this.objekt.reimwoerter[i];
+            if (reimWort === _satz.objekt) {
+                return true;
+            }
+        }
+        return false;
+    }
     toString() {
         return this.subjekt.wort + " " + this.praedikat.wort + " " + this.objekt.wort + ".";
     }
@@ -72,10 +81,17 @@ function zufallsWort(array) {
     return array[index];
 }
 initialisieren();
-let satz1 = erstellSatz();
-console.log(satz1.toString());
-let satz2 = erstellSatz();
-console.log(satz2.toString());
-let satz3 = erstellSatz();
-console.log(satz3.toString());
+let saetze = [];
+while (saetze.length != 6) {
+    let satz1 = erstellSatz();
+    let satz2 = satz1;
+    while (!satz1.reimtSichAuf(satz2)) {
+        satz2 = erstellSatz();
+    }
+    saetze[saetze.length] = satz1;
+    saetze[saetze.length] = satz2;
+}
+for (let i = 0; i < saetze.length; i++) {
+    console.log(saetze[i].toString());
+}
 //# sourceMappingURL=Poem.js.map

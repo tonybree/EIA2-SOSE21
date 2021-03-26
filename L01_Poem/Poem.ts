@@ -30,6 +30,16 @@ class Satz {
         this.objekt = _objekt;
     }
 
+    reimtSichAuf(_satz: Satz): boolean{
+        for (let i: number = 0; i < this.objekt.reimwoerter.length; i++){
+            let reimWort: Objekt = this.objekt.reimwoerter[i];
+            if(reimWort === _satz.objekt) {
+                return true;
+            } 
+        } 
+        return false;
+    }
+
     toString(){
         return this.subjekt.wort + " " + this.praedikat.wort + " " + this.objekt.wort + ".";
     }
@@ -94,11 +104,19 @@ function zufallsWort(array: Wort[]): any {
 }
 
 initialisieren();
-let satz1: Satz = erstellSatz();
-console.log(satz1.toString());
 
-let satz2: Satz = erstellSatz();
-console.log(satz2.toString());
+let saetze: Satz[] = [];
+while (saetze.length != 6) {
+    let satz1: Satz = erstellSatz();
+    let satz2: Satz = satz1;
+    while (!satz1.reimtSichAuf(satz2)) {
+        satz2 = erstellSatz();
+    } 
+    saetze[saetze.length] = satz1;
+    saetze[saetze.length] = satz2; 
+}
 
-let satz3: Satz = erstellSatz();
-console.log(satz3.toString());
+for (let i: number = 0; i < saetze.length; i++) {
+    console.log(saetze[i].toString());
+}
+
