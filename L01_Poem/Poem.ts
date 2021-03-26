@@ -19,6 +19,22 @@ class Objekt extends Wort {
     }
 }
 
+class Satz {
+    subjekt: Subjekt;
+    praedikat: Praedikat;
+    objekt: Objekt;
+
+    constructor(_subjekt: Subjekt, _praedikat: Praedikat, _objekt: Objekt) {
+        this.subjekt = _subjekt;
+        this.praedikat = _praedikat;
+        this.objekt = _objekt;
+    }
+
+    toString(){
+        return this.subjekt.wort + " " + this.praedikat.wort + " " + this.objekt.wort + ".";
+    }
+}
+
 let subjekte: Subjekt[] = [];
 let praedikate: Praedikat[] = [];
 let objekte: Objekt[] = [];
@@ -65,27 +81,24 @@ function initialisieren(){
     slytherin.addReimwort(grimm);
 }
 
-function erstellReim() {
-    let subjekt: Wort = zufallsWort(subjekte);
-    let praedikat: Wort = zufallsWort(praedikate);
-    let objekt: Wort = zufallsWort(objekte);
-    return [subjekt, praedikat, objekt];
+function erstellSatz(): Satz {
+    let subjekt: Subjekt = zufallsWort(subjekte);
+    let praedikat: Praedikat = zufallsWort(praedikate);
+    let objekt: Objekt = zufallsWort(objekte);
+    return new Satz(subjekt, praedikat, objekt);
 }
 
-function zufallsWort(array: Wort[]): Wort {
+function zufallsWort(array: Wort[]): any {
     let index: number = Math.floor(Math.random() * Math.floor(array.length));
     return array[index];
 }
 
 initialisieren();
-let satz1: Wort[] = erstellReim();
+let satz1: Satz = erstellSatz();
+console.log(satz1);
 
-console.log(satz1[0].wort + " " + satz1[1].wort + " " + satz1[2].wort + ".");
+let satz2: Satz = erstellSatz();
+console.log(satz2);
 
-let satz2: Wort[] = erstellReim();
-
-console.log(satz2[0].wort + " " + satz2[1].wort + " " + satz2[2].wort + ".");
-
-let satz3: Wort[] = erstellReim();
-
-console.log(satz3[0].wort + " " + satz3[1].wort + " " + satz3[2].wort + ".");
+let satz3: Satz = erstellSatz();
+console.log(satz3);
