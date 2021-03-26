@@ -1,15 +1,21 @@
 namespace Zufallsgedicht{
+let subjekte: Subjekt[];
+let paedikate: Praedikat[];
+let objekte: Objekt[];
+
+let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
 
 
-let subjekt: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-let praedikat: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-let objekt: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+    let initialisieren() {
+        let harry: Subjekt = new Subjekt();
+        harry.wort = "Harry";
+        subjekte[subjekte.size()] = harry;
+    }
 
-
-
-
-console.log(subjekt);
-console.log(praedikat);
-console.log(objekt);
+console.log(subjekte[0].wort);
+console.log(praedikatStrings);
+console.log(objektStrings);
 
 }
