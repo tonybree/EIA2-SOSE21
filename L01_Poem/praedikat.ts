@@ -1,6 +1,0 @@
-class Praedikat {
-    wort: string;
-
-    
- 
-}

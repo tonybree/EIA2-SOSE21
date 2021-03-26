@@ -1,6 +1,0 @@
-class Subjekt {
-    wort: string;
-
-    
- 
-}

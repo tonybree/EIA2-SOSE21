@@ -1,4 +1,13 @@
 "use strict";
+class Subjekt {
+}
+class Praedikat {
+}
+class Objekt {
+    addReimwort(_reimwort) {
+        this.reimwoerter[this.reimwoerter.length] = _reimwort;
+    }
+}
 let subjekte = [];
 let paedikate = [];
 let objekte = [];
