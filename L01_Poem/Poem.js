@@ -1,25 +1,64 @@
 "use strict";
-class Subjekt {
+class Wort {
+    constructor(_wort) {
+        this.wort = _wort;
+    }
 }
-class Praedikat {
+class Subjekt extends Wort {
 }
-class Objekt {
+class Praedikat extends Wort {
+}
+class Objekt extends Wort {
     addReimwort(_reimwort) {
         this.reimwoerter[this.reimwoerter.length] = _reimwort;
     }
 }
 let subjekte = [];
-let paedikate = [];
+let praedikate = [];
 let objekte = [];
-//let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-//let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-//let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+let subjektStrings = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+let praedikatStrings = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+//let objektStrings: string[] = ["die Zaubertränke", "die Besenschränke", "Professor Dumbledore", "das Quiditschtor", "der Grimm", "Slytherin"];
 function initialisieren() {
-    let harry = new Subjekt();
-    harry.wort = "Harry";
-    subjekte[subjekte.length] = harry;
+    for (let i = 0; i < subjektStrings.length; i++) {
+        let subjekt = new Subjekt(subjektStrings[i]);
+        subjekte[subjekte.length] = subjekt;
+    }
+    for (let i = 0; i < praedikatStrings.length; i++) {
+        let praedikat = new Praedikat(praedikatStrings[i]);
+        praedikate[praedikate.length] = praedikat;
+    }
+    let zaubertraenke = new Objekt("die Zaubertränke");
+    objekte[objekte.length] = zaubertraenke;
+    let besenschraenke = new Objekt("die Besenschränke");
+    objekte[objekte.length] = besenschraenke;
+    let dumbledore = new Objekt("Professor Dumbledore");
+    objekte[objekte.length] = dumbledore;
+    let quiditschtor = new Objekt("das Quiditschtor");
+    objekte[objekte.length] = quiditschtor;
+    let grimm = new Objekt("der Grimm");
+    objekte[objekte.length] = grimm;
+    let slytherin = new Objekt("Slytherin");
+    objekte[objekte.length] = slytherin;
+    zaubertraenke.addReimwort(besenschraenke);
+    besenschraenke.addReimwort(zaubertraenke);
+    dumbledore.addReimwort(quiditschtor);
+    quiditschtor.addReimwort(dumbledore);
+    grimm.addReimwort(slytherin);
+    slytherin.addReimwort(grimm);
+}
+function erstellReim() {
+    let woerter;
+    let subjekt = zufallsWort(subjekte);
+    let praedikat = zufallsWort(praedikate);
+    let objekt = zufallsWort(objekte);
+    woerter = [subjekt, praedikat, objekt];
+}
+function zufallsWort(array) {
+    let index = Math.floor(Math.random() * Math.floor(array.length));
+    return array[index];
 }
 initialisieren();
-console.log(subjekte[0].wort);
-console.log("wort");
+let reim = erstellReim();
+console.log(reim[0].wort + " " + reim[1].wort + " " + reim[0].wort + ".");
 //# sourceMappingURL=Poem.js.map
