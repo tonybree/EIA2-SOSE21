@@ -13,7 +13,7 @@ class Praedikat extends Wort {
 
 class Objekt extends Wort {
 
-    reimwoerter: Objekt[];
+    reimwoerter: Objekt[] = [];
     addReimwort(_reimwort: Objekt): void {
         this.reimwoerter [this.reimwoerter.length] = _reimwort;
     }

@@ -9,6 +9,10 @@ class Subjekt extends Wort {
 class Praedikat extends Wort {
 }
 class Objekt extends Wort {
+    constructor() {
+        super(...arguments);
+        this.reimwoerter = [];
+    }
     addReimwort(_reimwort) {
         this.reimwoerter[this.reimwoerter.length] = _reimwort;
     }
