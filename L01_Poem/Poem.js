@@ -40,7 +40,7 @@ function initialisieren() {
     objekte[objekte.length] = dumbledore;
     let quiditschtor = new Objekt("das Quiditschtor");
     objekte[objekte.length] = quiditschtor;
-    let grimm = new Objekt("der Grimm");
+    let grimm = new Objekt("den Grimm");
     objekte[objekte.length] = grimm;
     let slytherin = new Objekt("Slytherin");
     objekte[objekte.length] = slytherin;
@@ -62,6 +62,10 @@ function zufallsWort(array) {
     return array[index];
 }
 initialisieren();
-let reim = erstellReim();
-console.log(reim[0].wort + " " + reim[1].wort + " " + reim[2].wort + ".");
+let satz1 = erstellReim();
+console.log(satz1[0].wort + " " + satz1[1].wort + " " + satz1[2].wort + ".");
+let satz2 = erstellReim();
+console.log(satz2[0].wort + " " + satz2[1].wort + " " + satz2[2].wort + ".");
+let satz3 = erstellReim();
+console.log(satz3[0].wort + " " + satz3[1].wort + " " + satz3[2].wort + ".");
 //# sourceMappingURL=Poem.js.map

@@ -51,7 +51,7 @@ function initialisieren(){
     let quiditschtor: Objekt = new Objekt("das Quiditschtor");
     objekte[objekte.length] = quiditschtor;
 
-    let grimm: Objekt = new Objekt("der Grimm");
+    let grimm: Objekt = new Objekt("den Grimm");
     objekte[objekte.length] = grimm;
 
     let slytherin: Objekt = new Objekt("Slytherin");
@@ -78,6 +78,14 @@ function zufallsWort(array: Wort[]): Wort {
 }
 
 initialisieren();
-let reim: Wort[] = erstellReim();
+let satz1: Wort[] = erstellReim();
 
-console.log(reim[0].wort + " " + reim[1].wort + " " + reim[2].wort + ".");
+console.log(satz1[0].wort + " " + satz1[1].wort + " " + satz1[2].wort + ".");
+
+let satz2: Wort[] = erstellReim();
+
+console.log(satz2[0].wort + " " + satz2[1].wort + " " + satz2[2].wort + ".");
+
+let satz3: Wort[] = erstellReim();
+
+console.log(satz3[0].wort + " " + satz3[1].wort + " " + satz3[2].wort + ".");
