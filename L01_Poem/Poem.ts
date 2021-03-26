@@ -1,10 +1,10 @@
-let subjekte: Subjekt[];
-let paedikate: Praedikat[];
-let objekte: Objekt[];
+let subjekte: Subjekt[] = [];
+let paedikate: Praedikat[] = [];
+let objekte: Objekt[] = [];
 
-let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+//let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+//let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+//let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
 
 
 function initialisieren() {

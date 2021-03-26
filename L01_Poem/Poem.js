@@ -2,9 +2,9 @@
 let subjekte;
 let paedikate;
 let objekte;
-let subjektStrings = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-let praedikatStrings = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-let objektStrings = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+//let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+//let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+//let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
 function initialisieren() {
     let harry = new Subjekt();
     harry.wort = "Harry";
