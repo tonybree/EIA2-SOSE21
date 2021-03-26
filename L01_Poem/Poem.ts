@@ -8,7 +8,7 @@ let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zauber
 let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
 
 
-    let initialisieren() {
+    function initialisieren() {
         let harry: Subjekt = new Subjekt();
         harry.wort = "Harry";
         subjekte[subjekte.size()] = harry;
