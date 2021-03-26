@@ -1,7 +1,7 @@
 "use strict";
-let subjekte;
-let paedikate;
-let objekte;
+let subjekte = [];
+let paedikate = [];
+let objekte = [];
 //let subjektStrings: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
 //let praedikatStrings: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
 //let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
