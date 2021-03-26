@@ -17,6 +17,16 @@ class Objekt extends Wort {
         this.reimwoerter[this.reimwoerter.length] = _reimwort;
     }
 }
+class Satz {
+    constructor(_subjekt, _praedikat, _objekt) {
+        this.subjekt = _subjekt;
+        this.praedikat = _praedikat;
+        this.objekt = _objekt;
+    }
+    toString() {
+        return this.subjekt.wort + " " + this.praedikat.wort + " " + this.objekt.wort + ".";
+    }
+}
 let subjekte = [];
 let praedikate = [];
 let objekte = [];
@@ -51,21 +61,21 @@ function initialisieren() {
     grimm.addReimwort(slytherin);
     slytherin.addReimwort(grimm);
 }
-function erstellReim() {
+function erstellSatz() {
     let subjekt = zufallsWort(subjekte);
     let praedikat = zufallsWort(praedikate);
     let objekt = zufallsWort(objekte);
-    return [subjekt, praedikat, objekt];
+    return new Satz(subjekt, praedikat, objekt);
 }
 function zufallsWort(array) {
     let index = Math.floor(Math.random() * Math.floor(array.length));
     return array[index];
 }
 initialisieren();
-let satz1 = erstellReim();
-console.log(satz1[0].wort + " " + satz1[1].wort + " " + satz1[2].wort + ".");
-let satz2 = erstellReim();
-console.log(satz2[0].wort + " " + satz2[1].wort + " " + satz2[2].wort + ".");
-let satz3 = erstellReim();
-console.log(satz3[0].wort + " " + satz3[1].wort + " " + satz3[2].wort + ".");
+let satz1 = erstellSatz();
+console.log(satz1);
+let satz2 = erstellSatz();
+console.log(satz2);
+let satz3 = erstellSatz();
+console.log(satz3);
 //# sourceMappingURL=Poem.js.map
