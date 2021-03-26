@@ -73,9 +73,9 @@ function zufallsWort(array) {
 }
 initialisieren();
 let satz1 = erstellSatz();
-console.log(satz1);
+console.log(satz1.toString());
 let satz2 = erstellSatz();
-console.log(satz2);
+console.log(satz2.toString());
 let satz3 = erstellSatz();
-console.log(satz3);
+console.log(satz3.toString());
 //# sourceMappingURL=Poem.js.map
