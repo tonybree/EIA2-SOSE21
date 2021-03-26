@@ -95,10 +95,10 @@ function zufallsWort(array: Wort[]): any {
 
 initialisieren();
 let satz1: Satz = erstellSatz();
-console.log(satz1);
+console.log(satz1.toString());
 
 let satz2: Satz = erstellSatz();
-console.log(satz2);
+console.log(satz2.toString());
 
 let satz3: Satz = erstellSatz();
-console.log(satz3);
+console.log(satz3.toString());
