@@ -48,11 +48,10 @@ function initialisieren() {
     slytherin.addReimwort(grimm);
 }
 function erstellReim() {
-    let woerter;
     let subjekt = zufallsWort(subjekte);
     let praedikat = zufallsWort(praedikate);
     let objekt = zufallsWort(objekte);
-    woerter = [subjekt, praedikat, objekt];
+    return [subjekt, praedikat, objekt];
 }
 function zufallsWort(array) {
     let index = Math.floor(Math.random() * Math.floor(array.length));
@@ -60,5 +59,5 @@ function zufallsWort(array) {
 }
 initialisieren();
 let reim = erstellReim();
-console.log(reim[0].wort + " " + reim[1].wort + " " + reim[0].wort + ".");
+console.log(reim[0].wort + " " + reim[1].wort + " " + reim[2].wort + ".");
 //# sourceMappingURL=Poem.js.map

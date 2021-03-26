@@ -66,14 +66,13 @@ function initialisieren(){
 }
 
 function erstellReim() {
-    let woerter: Wort[];
     let subjekt: Wort = zufallsWort(subjekte);
     let praedikat: Wort = zufallsWort(praedikate);
     let objekt: Wort = zufallsWort(objekte);
-    woerter = [subjekt, praedikat, objekt];
+    return [subjekt, praedikat, objekt];
 }
 
-function zufallsWort(array: []) {
+function zufallsWort(array: Wort[]): Wort {
     let index: number = Math.floor(Math.random() * Math.floor(array.length));
     return array[index];
 }
@@ -81,4 +80,4 @@ function zufallsWort(array: []) {
 initialisieren();
 let reim: Wort[] = erstellReim();
 
-console.log(reim[0].wort + " " + reim[1].wort + " " + reim[0].wort + ".");
+console.log(reim[0].wort + " " + reim[1].wort + " " + reim[2].wort + ".");
