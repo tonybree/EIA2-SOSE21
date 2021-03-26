@@ -17,7 +17,5 @@ let objektStrings: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts"
     initialisieren();
 
 console.log(subjekte[0].wort);
-console.log(praedikatStrings);
-console.log(objektStrings);
 
 }

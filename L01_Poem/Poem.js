@@ -14,7 +14,5 @@ var Zufallsgedicht;
     }
     initialisieren();
     console.log(subjekte[0].wort);
-    console.log(praedikatStrings);
-    console.log(objektStrings);
 })(Zufallsgedicht || (Zufallsgedicht = {}));
 //# sourceMappingURL=Poem.js.map
