@@ -39,7 +39,7 @@ class Satz {
 let subjekte = [];
 let praedikate = [];
 let objekte = [];
-let subjektStrings = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+let subjektStrings = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Voldemort"];
 let praedikatStrings = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
 //let objektStrings: string[] = ["die Zaubertränke", "die Besenschränke", "Professor Dumbledore", "das Quiditschtor", "der Grimm", "Slytherin"];
 function initialisieren() {
