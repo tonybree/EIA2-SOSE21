@@ -1,0 +1,17 @@
+body {
+    position: absolute;
+}
+
+#div0 {
+    display: inline-block;
+    height: 600px;
+    width: 400px;
+    background-color: aquamarine;
+}
+
+#div1 {
+    display: inline-block;
+    height: 600px;
+    width: 400px;
+    background-color: aquamarine;
+}
