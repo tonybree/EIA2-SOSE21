@@ -1,23 +1,38 @@
 html {
     display: flex;
+    justify-content: center;
+}
+
+header {
+    display: block; 
 }
 
 body {
     display: block;
     margin-top: 10px;
-    justify-content: center;
 }
 
 #div0 {
     display: inline-block;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     background-color: aquamarine;
+    border: thin solid darkgreen;
 }
 
 #div1 {
     display: inline-block;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     background-color: aquamarine;
+    border: thin solid darkgreen;
+}
+
+#mouse {
+    position: absolute;
+    padding: 10px;
+    width: 300px;
+    height: 60px;
+    border-radius: 0.3em;
+    color: red;
 }
