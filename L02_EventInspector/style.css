@@ -1,17 +1,23 @@
+html {
+    display: flex;
+}
+
 body {
-    position: absolute;
+    display: block;
+    margin-top: 10px;
+    justify-content: center;
 }
 
 #div0 {
     display: inline-block;
-    height: 600px;
+    height: 400px;
     width: 400px;
     background-color: aquamarine;
 }
 
 #div1 {
     display: inline-block;
-    height: 600px;
+    height: 400px;
     width: 400px;
     background-color: aquamarine;
 }
