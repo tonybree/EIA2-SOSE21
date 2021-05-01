@@ -1,49 +1,50 @@
-window.addEventListener('load', function (e) {
+"use strict";
+window.addEventListener('load', e => {
     handleLoad(e);
 });
 function handleLoad(_event) {
-    document.addEventListener('mousemove', function (e) {
+    document.addEventListener('mousemove', e => {
         setInfoBox(e);
     });
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', e => {
         logInfo(e);
     });
-    document.addEventListener('keyup', function (e) {
+    document.addEventListener('keyup', e => {
         logInfo(e);
     });
-    document.body.addEventListener('click', function (e) {
+    document.body.addEventListener('click', e => {
         logInfo(e);
     });
-    document.body.addEventListener('keyup', function (e) {
+    document.body.addEventListener('keyup', e => {
         logInfo(e);
     });
-    document.getElementById('div0').addEventListener('click', function (e) {
+    document.getElementById('div0').addEventListener('click', e => {
         logInfo(e);
     });
-    document.getElementById('div0').addEventListener('keyup', function (e) {
+    document.getElementById('div0').addEventListener('keyup', e => {
         logInfo(e);
     });
-    document.getElementById('div1').addEventListener('click', function (e) {
+    document.getElementById('div1').addEventListener('click', e => {
         logInfo(e);
     });
-    document.getElementById('div1').addEventListener('keyup', function (e) {
+    document.getElementById('div1').addEventListener('keyup', e => {
         logInfo(e);
     });
 }
 function logInfo(_event) {
-    var type = "Event type: " + _event.type;
-    var target = "Target: " + _event.target;
-    var currentTarget = "Current target: " + _event.currentTarget;
-    var event = "Event: " + _event;
+    let type = "Event type: " + _event.type;
+    let target = "Target: " + _event.target;
+    let currentTarget = "Current target: " + _event.currentTarget;
+    let event = "Event: " + _event;
     console.log(type);
     console.log(target);
     console.log(currentTarget);
     console.log(event);
 }
 function setInfoBox(_event) {
-    var mouseX = _event.pageX;
-    var mouseY = _event.pageY;
-    var html = "X: " + mouseX + "<br>";
+    let mouseX = _event.pageX;
+    let mouseY = _event.pageY;
+    let html = "X: " + mouseX + "<br>";
     html += "Y: " + mouseY + "<br>";
     html += "Events target: " + _event.target;
     document.getElementById('mouse').style.border = "thin solid black";
@@ -51,3 +52,4 @@ function setInfoBox(_event) {
     document.getElementById("mouse").style.left = "" + (mouseX + 20);
     document.getElementById("mouse").style.top = "" + (mouseY + 20);
 }
+//# sourceMappingURL=script.js.map

@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="settings.css">
+    <script src="settings.js" ></script>
+    <title>Startseite - Memory</title>
+</head>
+<body>
+    <h1>Memory</h1>
+    <form action="game.html" method="GET">
+        <label for="cardAmount">Kartenmenge:</label>
+            <input id="cardAmount" name="cardAmount" type="number" min="10" max="50" step="2" value="10"/><br>
+
+        <label for="cardSize"> Kartengröße:</label>
+            <input id="cardSize" name="cardSize" type="range" min="50" max="100" value="50"/><br>
+
+        <label for="cardColor">Kartenfarbe:</label>
+            <input type="color" name="cardColor" id="cardColor"/><br>
+
+        <label for="fieldColor">Spielfeldfarbe:</label>
+            <input type="color" name="fieldColor" id="fieldColor"/><br>
+
+        <label for="fontColor">Schriftfarbe:</label>
+            <input type="color" name="fontColor" id="fontColor"/><br>
+
+        <label for="font">Schriftart:</label>
+        <select id="font" name="font">
+            <option value="Arial"selected>Arial</option>
+            <option value="Comic-Sans">Comic-Sans</option>
+            <option value="Gothik">Gothik</option>
+        </select>
+
+        <input type="submit" value="Start game"/> 
+
+    </form>
+    
+</body>
+</html>

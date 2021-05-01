@@ -1,0 +1,13 @@
+html {
+    max-width: 30%;
+    padding: 100px;
+    margin: auto;
+    line-height: 200%;
+}
+
+form {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px;
+}

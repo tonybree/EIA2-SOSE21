@@ -1,0 +1,190 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: rgb(245, 199, 72);
+    width: 1280px;
+    height: 800px;
+    margin: auto;
+  }
+
+
+.dropbtn {
+    width: 100px;
+    background-color: #48a5c6;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    float: left;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+  }
+  
+  .dropdown-content #Leicht, #Mittel, #Schwer {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+    .dropdown-content 
+    #Leicht:hover, 
+    #Mittel:hover, 
+    #Schwer:hover {
+        background-color: #7ac9d6;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+    }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #4f798f;
+  }
+
+.score {
+    height: 20px;
+    font-size: 50px;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+    width: 200px;
+    position: relative;
+}
+
+#user-name {
+    font-size: 20px;
+    width: 100px;
+    background-color: #4CAF50;
+    color: black;
+    padding: 2px 10px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#cpu-name {
+    padding: 20px;
+    width: 100px;
+    font-size: 20px;
+    background-color: lightcoral;
+    color: white;
+    padding: 2px 10px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+}
+
+
+#footer {
+
+    position: absolute;
+    justify-content: center;
+    bottom: 0px;
+    left: 150px;
+  }
+
+.memory-spiel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.card{
+    margin: 1px;
+    background-color: white;
+    width: 10%;
+    height: 15%;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .2s;
+    border-color: lightgray;
+    border-width: 8px;
+    border-style: solid;
+    border-radius: 5px;
+    display: none;
+}
+
+.card:active {
+    transform: scale(.98);
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card.disabled {
+    margin: 1px;
+    background-color:  rgb(245, 199, 72);
+    width: 12%;
+    height: 18%;
+    border-color:  rgb(245, 199, 72);
+    border-width: 8px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.card.disabled img {
+    display: none;
+}
+
+.back,
+.front {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.front {
+    transform: rotateY(180deg);
+    position: absolute;
+    margin: auto;
+    left: 10px;
+    width: 80%;
+    height: 80%;
+}
+.Satz {
+    font-size: 15px;
+    backface-visibility: hidden;
+    display: flex;
+    margin: auto;
+    transform: rotateY(180deg);
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: 110px;
+}
+
+.card.disabled .Satz{
+    display: none;
+}
