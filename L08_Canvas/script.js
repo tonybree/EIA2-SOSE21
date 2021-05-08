@@ -8,6 +8,7 @@ var L08_Canvas;
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
         let colors = ["#d2d2d2", "#bdbdbd", "#a8a8a8", "#787878", "#4b4b4b", "#000000"];
+        let pickColor = Math.floor(Math.random() * Math.floor(5));
         for (let index = 0; index < 150; index++) {
             let x = Math.floor(Math.random() * Math.floor(canvas.width));
             let y = Math.floor(Math.random() * Math.floor(canvas.height));
@@ -15,7 +16,6 @@ var L08_Canvas;
             let y2 = Math.floor(Math.random() * Math.floor(canvas.height));
             let x3 = Math.floor(Math.random() * Math.floor(canvas.width));
             let y3 = Math.floor(Math.random() * Math.floor(canvas.height));
-            let pickColor = Math.floor(Math.random() * Math.floor(5));
             crc2.beginPath();
             crc2.arc(x, y, 100, 0, 2 * Math.PI, false);
             crc2.fillStyle = colors[pickColor];
