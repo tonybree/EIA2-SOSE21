@@ -191,11 +191,81 @@ namespace L08_Blumenwiese {
             _crc2.restore(); 
         }
     }
+    class Bee {
+        position: Vector;
+        velocity: Vector;
+        //coordinates: number[][];
+
+        constructor (_x: number, _y: number, _velocity: Vector /*_coordinates: number[][]*/) {
+            this.position = {x: _x, y: _y};
+            this.velocity = {x: _x, y: _y};
+            //this.coordinates = _coordinates;
+        }
+        draw (_crc2: CanvasRenderingContext2D, _x: number, _y: number) {
+            _crc2.save();
+            _crc2.translate(this.position.x, this.position.y);
+            _crc2.beginPath();
+            _crc2.fillStyle = "yellow";
+            _crc2.ellipse(_x, _y, 15, 20, Math.PI / 2, 0, 2 * Math.PI);
+            _crc2.arc(_x + 20, _y - 5, 10, 0, 2 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+            //streifen
+            _crc2.beginPath();
+            _crc2.fillStyle = "black";
+            _crc2.ellipse(_x, _y, 15, 10, Math.PI / 2, 0, 1 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+            //Flügel Biene
+            _crc2.beginPath();
+            _crc2.fillStyle = "lightBlue";
+            _crc2.ellipse(_x - 10, _y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+        }
+        move(_timeslice: number): void {
+            let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board");
+            let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
+            
+            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset);
+     
+            if (this.position.x < 0)
+            this.position.x += crc2.canvas.width;
+     
+            if (this.position.y < 0)
+            this.position.y += crc2.canvas.height;
+     
+            if (this.position.x > crc2.canvas.width)
+            this.position.x -= crc2.canvas.width;
+     
+            if (this.position.y > crc2.canvas.height)
+            this.position.y -= crc2.canvas.height;
+     
+            }
+    }
+
+        /*createBeePath () {
+            let path: Path2D = new Path2D();
+            let first: boolean = true;
+            for (let coordinates of this.coordinates) {
+                if (first) {
+                    path.moveTo(coordinates[0], coordinates[1]);
+                } else {
+                    path.lineTo(coordinates[0], coordinates[1]);
+                }
+                first = false;
+            }
+            path.closePath();
+        }*/
+    
     
 
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
     let golden: number = 0.62;
+    let beeArray: Bee [] = [];
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -218,7 +288,8 @@ namespace L08_Blumenwiese {
         pine1.draw(crc2, horizon);
         let pine2 = new Pine (-50, -90, .5, .7);
         pine2.draw(crc2, horizon);
-
+        let bee = new Bee(100, 100);
+        bee.draw(crc2);
         
         for (let i: number = 0; i < 10; i++) {
             let centerX: number = Math.random() * canvas.width + 0;
