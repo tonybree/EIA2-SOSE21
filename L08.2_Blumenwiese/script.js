@@ -1,9 +1,23 @@
 "use strict";
 var L08_Blumenwiese;
 (function (L08_Blumenwiese) {
+    class Vector {
+        constructor(_x, _y) {
+            this.x = _x;
+            this.y = _y;
+        }
+        scale(_factor) {
+            this.x = this.x * _factor;
+            this.y = this.y * _factor;
+        }
+        add(_addend) {
+            this.x += _addend.x;
+            this.y += _addend.y;
+        }
+    }
     class Mountain {
         constructor(_x, _y, _min, _max, _colorLow, _colorHigh) {
-            this.position = { x: _x, y: _y };
+            this.position = new Vector(_x, _y);
             this.min = _min;
             this.max = _max;
             this.colorLow = _colorLow;
@@ -121,8 +135,8 @@ var L08_Blumenwiese;
         }
     }
     class Sun {
-        constructor(_position) {
-            this.position = _position;
+        constructor(_x, _y) {
+            this.position = new Vector(_x, _y);
         }
         draw(_crc2) {
             let r1 = 25;
@@ -139,9 +153,69 @@ var L08_Blumenwiese;
             _crc2.restore();
         }
     }
+    class Bee {
+        //coordinates: number[][];
+        constructor(_positionX, _positionY, _velocityX, _velocityY /*_coordinates: number[][]*/) {
+            this.position = new Vector(_positionX, _positionY);
+            this.velocity = new Vector(_velocityX, _velocityY);
+            //this.coordinates = _coordinates;
+        }
+        draw(_crc2) {
+            console.log("draw bee");
+            _crc2.save();
+            _crc2.translate(this.position.x, this.position.y);
+            _crc2.beginPath();
+            _crc2.fillStyle = "yellow";
+            _crc2.ellipse(this.position.x, this.position.y, 15, 20, Math.PI / 2, 0, 2 * Math.PI);
+            _crc2.arc(this.position.x + 20, this.position.y - 5, 10, 0, 2 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+            //streifen
+            _crc2.beginPath();
+            _crc2.fillStyle = "black";
+            _crc2.ellipse(this.position.x, this.position.y, 15, 10, Math.PI / 2, 0, 1 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+            //Flügel Biene
+            _crc2.beginPath();
+            _crc2.fillStyle = "lightBlue";
+            _crc2.ellipse(this.position.x - 10, this.position.y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
+            _crc2.fill();
+            _crc2.closePath();
+        }
+        move(_crc2, _timeslice) {
+            //let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board");
+            //let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
+            let offset = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset);
+            if (this.position.x < 0)
+                this.position.x += _crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += _crc2.canvas.height;
+            if (this.position.x > _crc2.canvas.width)
+                this.position.x -= _crc2.canvas.width;
+            if (this.position.y > _crc2.canvas.height)
+                this.position.y -= _crc2.canvas.height;
+        }
+    }
+    /*createBeePath () {
+        let path: Path2D = new Path2D();
+        let first: boolean = true;
+        for (let coordinates of this.coordinates) {
+            if (first) {
+                path.moveTo(coordinates[0], coordinates[1]);
+            } else {
+                path.lineTo(coordinates[0], coordinates[1]);
+            }
+            first = false;
+        }
+        path.closePath();
+    }*/
     window.addEventListener("load", handleLoad);
     let crc2;
     let golden = 0.62;
+    let beeArray = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
@@ -150,7 +224,7 @@ var L08_Blumenwiese;
         let horizon = crc2.canvas.height * golden;
         let background = new Background();
         background.draw(crc2, golden);
-        let sun = new Sun({ x: 90, y: 80 });
+        let sun = new Sun(90, 80);
         sun.draw(crc2);
         crc2.fillStyle = "HSL(105, 70%, 30%)";
         crc2.fillRect(0, 400, crc2.canvas.width, 200);
@@ -162,6 +236,9 @@ var L08_Blumenwiese;
         pine1.draw(crc2, horizon);
         let pine2 = new Pine(-50, -90, .5, .7);
         pine2.draw(crc2, horizon);
+        let bee = new Bee(100, 100, 0, 300);
+        bee.draw(crc2);
+        //bee.move(crc2, 200);
         for (let i = 0; i < 10; i++) {
             let centerX = Math.random() * canvas.width + 0;
             let centerY = 560;

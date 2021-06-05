@@ -1,7 +1,22 @@
 namespace L08_Blumenwiese {
-    interface Vector {
+    class Vector {
         x: number;
         y: number;
+
+        constructor(_x: number, _y: number){
+            this.x = _x;
+            this.y = _y;
+        }
+        
+        scale(_factor: number) {
+            this.x = this.x * _factor;
+            this.y = this.y * _factor;
+        }
+        
+        add(_addend: Vector): void {
+            this.x += _addend.x;
+            this.y += _addend.y;
+        }
     }
 
     class Mountain {
@@ -12,7 +27,7 @@ namespace L08_Blumenwiese {
         colorHigh: string;
 
         constructor(_x: number, _y: number, _min: number, _max: number, _colorLow: string, _colorHigh: string) {
-            this.position = {x: _x, y: _y};
+            this.position = new Vector (_x, _y);
             this.min = _min;
             this.max = _max;
             this.colorLow = _colorLow;
@@ -170,8 +185,8 @@ namespace L08_Blumenwiese {
     class Sun {
         position: Vector;
 
-        constructor (_position: Vector) {
-            this.position = _position;
+        constructor (_x: number, _y: number) {
+            this.position = new Vector (_x, _y);
         }
         draw (_crc2: CanvasRenderingContext2D) {
             let r1:  number = 25;
@@ -196,52 +211,53 @@ namespace L08_Blumenwiese {
         velocity: Vector;
         //coordinates: number[][];
 
-        constructor (_x: number, _y: number, _velocity: Vector /*_coordinates: number[][]*/) {
-            this.position = {x: _x, y: _y};
-            this.velocity = {x: _x, y: _y};
+        constructor (_positionX: number, _positionY: number, _velocityX: number, _velocityY: number /*_coordinates: number[][]*/) {
+            this.position = new Vector (_positionX, _positionY);
+            this.velocity = new Vector (_velocityX, _velocityY);
             //this.coordinates = _coordinates;
         }
-        draw (_crc2: CanvasRenderingContext2D, _x: number, _y: number) {
+        draw (_crc2: CanvasRenderingContext2D) {
+            console.log("draw bee");
             _crc2.save();
             _crc2.translate(this.position.x, this.position.y);
             _crc2.beginPath();
             _crc2.fillStyle = "yellow";
-            _crc2.ellipse(_x, _y, 15, 20, Math.PI / 2, 0, 2 * Math.PI);
-            _crc2.arc(_x + 20, _y - 5, 10, 0, 2 * Math.PI);
+            _crc2.ellipse(this.position.x, this.position.y, 15, 20, Math.PI / 2, 0, 2 * Math.PI);
+            _crc2.arc(this.position.x + 20, this.position.y - 5, 10, 0, 2 * Math.PI);
             _crc2.fill();
             _crc2.closePath();
             //streifen
             _crc2.beginPath();
             _crc2.fillStyle = "black";
-            _crc2.ellipse(_x, _y, 15, 10, Math.PI / 2, 0, 1 * Math.PI);
+            _crc2.ellipse(this.position.x, this.position.y, 15, 10, Math.PI / 2, 0, 1 * Math.PI);
             _crc2.fill();
             _crc2.closePath();
             //Flügel Biene
             _crc2.beginPath();
             _crc2.fillStyle = "lightBlue";
-            _crc2.ellipse(_x - 10, _y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
+            _crc2.ellipse(this.position.x - 10, this.position.y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
             _crc2.fill();
             _crc2.closePath();
         }
-        move(_timeslice: number): void {
-            let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board");
-            let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
+        move(_crc2: CanvasRenderingContext2D, _timeslice: number): void {
+            //let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board");
+            //let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
             
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.position.add(offset);
      
             if (this.position.x < 0)
-            this.position.x += crc2.canvas.width;
+            this.position.x += _crc2.canvas.width;
      
             if (this.position.y < 0)
-            this.position.y += crc2.canvas.height;
+            this.position.y += _crc2.canvas.height;
      
-            if (this.position.x > crc2.canvas.width)
-            this.position.x -= crc2.canvas.width;
+            if (this.position.x > _crc2.canvas.width)
+            this.position.x -= _crc2.canvas.width;
      
-            if (this.position.y > crc2.canvas.height)
-            this.position.y -= crc2.canvas.height;
+            if (this.position.y > _crc2.canvas.height)
+            this.position.y -= _crc2.canvas.height;
      
             }
     }
@@ -276,7 +292,7 @@ namespace L08_Blumenwiese {
         let horizon: number = crc2.canvas.height * golden;
         let background = new Background ();
         background.draw(crc2, golden);
-        let sun = new Sun ({x: 90, y: 80});
+        let sun = new Sun (90, 80);
         sun.draw(crc2);
         crc2.fillStyle = "HSL(105, 70%, 30%)";
         crc2.fillRect(0, 400, crc2.canvas.width, 200);
@@ -288,8 +304,9 @@ namespace L08_Blumenwiese {
         pine1.draw(crc2, horizon);
         let pine2 = new Pine (-50, -90, .5, .7);
         pine2.draw(crc2, horizon);
-        let bee = new Bee(100, 100);
+        let bee = new Bee(100, 100, 0, 300);
         bee.draw(crc2);
+        //bee.move(crc2, 200);
         
         for (let i: number = 0; i < 10; i++) {
             let centerX: number = Math.random() * canvas.width + 0;
