@@ -167,21 +167,15 @@ namespace L08_Blumenwiese {
             _crc2.lineWidth = 1;
             _crc2.stroke();
         }
-    }
-
-    class Background {
-        draw (_crc2: CanvasRenderingContext2D, _golden: number) {
-            let gradient: CanvasGradient = _crc2.createLinearGradient(0, 0, 0, _crc2.canvas.height);
-            gradient.addColorStop(0, "lightblue");
-            gradient.addColorStop(_golden, "white");
-            gradient.addColorStop(0.6, "darkorange");
-    
-    
-            _crc2.fillStyle = gradient;
-            _crc2.fillRect(0, 0, _crc2.canvas.width, _crc2.canvas.height);
+        function replicate(_): void {
+        for (let i: number = 0; i < 10; i++) {
+            let centerX: number = Math.random() * crc2.canvas.width + 0;
+            let centerY: number = 560;
+            let radius: number = 70;
+            let color: string = generateRandomColor();
+            let flower = new Flower (centerX, centerY, radius, 4, color);
         }
     }
-
     class Sun {
         position: Vector;
 
@@ -217,7 +211,6 @@ namespace L08_Blumenwiese {
             //this.coordinates = _coordinates;
         }
         draw (_crc2: CanvasRenderingContext2D) {
-            console.log("draw bee");
             _crc2.save();
             _crc2.translate(this.position.x, this.position.y);
             _crc2.beginPath();
@@ -246,42 +239,27 @@ namespace L08_Blumenwiese {
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.position.add(offset);
-     
+    
             if (this.position.x < 0)
             this.position.x += _crc2.canvas.width;
-     
+    
             if (this.position.y < 0)
             this.position.y += _crc2.canvas.height;
-     
+    
             if (this.position.x > _crc2.canvas.width)
             this.position.x -= _crc2.canvas.width;
-     
+    
             if (this.position.y > _crc2.canvas.height)
             this.position.y -= _crc2.canvas.height;
-     
+    
             }
     }
-
-        /*createBeePath () {
-            let path: Path2D = new Path2D();
-            let first: boolean = true;
-            for (let coordinates of this.coordinates) {
-                if (first) {
-                    path.moveTo(coordinates[0], coordinates[1]);
-                } else {
-                    path.lineTo(coordinates[0], coordinates[1]);
-                }
-                first = false;
-            }
-            path.closePath();
-        }*/
-    
     
 
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
     let golden: number = 0.62;
-    let beeArray: Bee [] = [];
+    let bees: Bee [] = [];
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -290,8 +268,7 @@ namespace L08_Blumenwiese {
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
         let horizon: number = crc2.canvas.height * golden;
-        let background = new Background ();
-        background.draw(crc2, golden);
+        drawBackground();
         let sun = new Sun (90, 80);
         sun.draw(crc2);
         crc2.fillStyle = "HSL(105, 70%, 30%)";
@@ -306,16 +283,28 @@ namespace L08_Blumenwiese {
         pine2.draw(crc2, horizon);
         let bee = new Bee(100, 100, 0, 300);
         bee.draw(crc2);
-        //bee.move(crc2, 200);
-        
-        for (let i: number = 0; i < 10; i++) {
-            let centerX: number = Math.random() * canvas.width + 0;
-            let centerY: number = 560;
-            let radius: number = 70;
-            let color: string = generateRandomColor();
-            let flower = new Flower (centerX, centerY, radius, 4, color);
-            flower.draw(crc2);
+
+        let background: ImageData = crc2.getImageData(0, 0, 1000, 600);
+
+        window.setInterval(update, 20);
+
+        function update(): void {
+            console.log("update");
+            for (let bee of bees) {
+                bee.move(crc2, 1 / 50);
+                bee.draw(crc2);
+            }
         }
+    }
+
+    function drawBackground (): void {
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
+        gradient.addColorStop(0, "lightblue");
+        gradient.addColorStop(golden, "white");
+        gradient.addColorStop(0.6, "darkorange");
+
+        crc2.fillStyle = gradient;
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
 
     function generateRandomColor(): string {
