@@ -124,15 +124,6 @@ var L08_Blumenwiese;
             _crc2.stroke();
         }
     }
-    function replicate(_) {
-        for (let i = 0; i < 10; i++) {
-            let centerX = Math.random() * crc2.canvas.width + 0;
-            let centerY = 560;
-            let radius = 70;
-            let color = generateRandomColor();
-            let flower = new Flower(centerX, centerY, radius, 4, color);
-        }
-    }
     class Sun {
         constructor(_x, _y) {
             this.position = new Vector(_x, _y);
@@ -222,14 +213,15 @@ var L08_Blumenwiese;
         pine2.draw(crc2, horizon);
         let bee = new Bee(100, 100, 0, 300);
         bee.draw(crc2);
+        bees.push(bee);
         let background = crc2.getImageData(0, 0, 1000, 600);
         window.setInterval(update, 20);
-        function update() {
-            console.log("update");
-            for (let bee of bees) {
-                bee.move(crc2, 1 / 50);
-                bee.draw(crc2);
-            }
+    }
+    function update() {
+        console.log("update");
+        for (let bee of bees) {
+            bee.move(crc2, 1 / 50);
+            bee.draw(crc2);
         }
     }
     function drawBackground() {

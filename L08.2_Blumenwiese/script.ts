@@ -167,15 +167,16 @@ namespace L08_Blumenwiese {
             _crc2.lineWidth = 1;
             _crc2.stroke();
         }
-        function replicate(_): void {
+        /*function(): void {
         for (let i: number = 0; i < 10; i++) {
             let centerX: number = Math.random() * crc2.canvas.width + 0;
             let centerY: number = 560;
             let radius: number = 70;
             let color: string = generateRandomColor();
             let flower = new Flower (centerX, centerY, radius, 4, color);
-        }
+        }*/
     }
+
     class Sun {
         position: Vector;
 
@@ -283,17 +284,18 @@ namespace L08_Blumenwiese {
         pine2.draw(crc2, horizon);
         let bee = new Bee(100, 100, 0, 300);
         bee.draw(crc2);
+        bees.push(bee); 
 
         let background: ImageData = crc2.getImageData(0, 0, 1000, 600);
 
         window.setInterval(update, 20);
 
-        function update(): void {
-            console.log("update");
-            for (let bee of bees) {
-                bee.move(crc2, 1 / 50);
-                bee.draw(crc2);
-            }
+    }
+    function update(): void {
+        console.log("update");
+        for (let bee of bees) {
+            bee.move(crc2, 1 / 50);
+            bee.draw(crc2);
         }
     }
 
