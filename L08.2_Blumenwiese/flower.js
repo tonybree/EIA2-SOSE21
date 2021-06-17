@@ -33,6 +33,7 @@ var L08_Blumenwiese;
             _crc2.fill();
             _crc2.beginPath();
             _crc2.arc(this.centerX, this.centerY, this.radius / 5, 0, 2 * Math.PI, false);
+            _crc2.closePath();
             _crc2.fillStyle = "#FFFF66";
             _crc2.fill();
             _crc2.strokeStyle = "white";
