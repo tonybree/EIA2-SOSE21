@@ -14,10 +14,10 @@ var L08_Blumenwiese;
                 this.position.x = L08_Blumenwiese.crc2.canvas.width;
             if (this.position.y < 0)
                 this.position.y = L08_Blumenwiese.crc2.canvas.height;
-            if (this.position.x > L08_Blumenwiese.crc2.canvas.width / L08_Blumenwiese.golden)
+            if (this.position.x > L08_Blumenwiese.crc2.canvas.width)
                 this.position.x -= L08_Blumenwiese.crc2.canvas.width;
-            if (this.position.y > L08_Blumenwiese.crc2.canvas.height / L08_Blumenwiese.golden)
-                this.position.y -= L08_Blumenwiese.crc2.canvas.width;
+            if (this.position.y > L08_Blumenwiese.crc2.canvas.height)
+                this.position.y -= L08_Blumenwiese.crc2.canvas.height;
         }
         draw() {
             console.log("I like to move it, move it...");

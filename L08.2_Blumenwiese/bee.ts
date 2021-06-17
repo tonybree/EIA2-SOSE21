@@ -28,6 +28,7 @@ namespace L08_Blumenwiese {
             crc2.ellipse(this.position.x - 10, this.position.y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
             crc2.fill();
             crc2.closePath();
+            crc2.restore();
         }
     } 
 }

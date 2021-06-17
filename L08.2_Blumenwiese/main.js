@@ -15,7 +15,7 @@ var L08_Blumenwiese;
         L08_Blumenwiese.crc2.strokeStyle = "grey";
         L08_Blumenwiese.crc2.fillRect(0, 0, L08_Blumenwiese.crc2.canvas.width, L08_Blumenwiese.crc2.canvas.height);
         L08_Blumenwiese.horizon = L08_Blumenwiese.crc2.canvas.height * L08_Blumenwiese.golden;
-        //createBees(10);
+        createBees(10);
         window.setInterval(update, 100);
         drawBackground();
         drawSun(new L08_Blumenwiese.Vector(100, 50));
@@ -44,10 +44,10 @@ var L08_Blumenwiese;
         console.log("x wurde das Bild schon gemalt!");
         L08_Blumenwiese.crc2.fillRect(0, 0, L08_Blumenwiese.crc2.canvas.width, L08_Blumenwiese.crc2.canvas.height);
         L08_Blumenwiese.crc2.putImageData(background, 0, 0);
-        /*for (let bee of bees) {
+        for (let bee of L08_Blumenwiese.bees) {
             bee.move(1 / 50);
             bee.draw();
-        }*/
+        }
     }
     function generateRandomColor() {
         let r = Math.floor(Math.random() * 255);
@@ -60,6 +60,7 @@ var L08_Blumenwiese;
         for (let i = 0; i < 10; i++) {
             let flower = new L08_Blumenwiese.Flower(generateRandomColor());
             L08_Blumenwiese.flowers.push(flower);
+            flower.draw(L08_Blumenwiese.crc2);
         }
     }
     function drawBackground() {

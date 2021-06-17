@@ -21,11 +21,11 @@ namespace L08_Blumenwiese {
             if (this.position.y < 0)
             this.position.y = crc2.canvas.height;
 
-            if (this.position.x > crc2.canvas.width / golden)
+            if (this.position.x > crc2.canvas.width)
             this.position.x -=  crc2.canvas.width;
 
-            if (this.position.y > crc2.canvas.height / golden)
-            this.position.y -= crc2.canvas.width;
+            if (this.position.y > crc2.canvas.height)
+            this.position.y -= crc2.canvas.height;
 
         }
         draw(): void {

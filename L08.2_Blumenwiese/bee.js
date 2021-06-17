@@ -27,6 +27,7 @@ var L08_Blumenwiese;
             L08_Blumenwiese.crc2.ellipse(this.position.x - 10, this.position.y - 20, 8, 20, Math.PI / -5, 0, 2 * Math.PI);
             L08_Blumenwiese.crc2.fill();
             L08_Blumenwiese.crc2.closePath();
+            L08_Blumenwiese.crc2.restore();
         }
     }
     L08_Blumenwiese.Bee = Bee;

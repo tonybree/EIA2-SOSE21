@@ -24,7 +24,7 @@ namespace L08_Blumenwiese {
 
         horizon = crc2.canvas.height * golden;
         
-        //createBees(10);
+        createBees(10);
         window.setInterval(update, 100);
         drawBackground();
         drawSun(new Vector(100, 50));
@@ -37,6 +37,7 @@ namespace L08_Blumenwiese {
         let pine2: Pine = new Pine (-50, -90, .5, .7);
         pine2.draw(crc2, horizon);
         drawFlower();
+
 
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
 
@@ -60,10 +61,10 @@ namespace L08_Blumenwiese {
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(background, 0, 0);
 
-        /*for (let bee of bees) {
+        for (let bee of bees) {
             bee.move(1 / 50);
             bee.draw();
-        }*/
+        }
     }
 
     function generateRandomColor(): string {
@@ -78,6 +79,7 @@ namespace L08_Blumenwiese {
         for (let i: number = 0; i < 10; i++) {
             let flower: Flower = new Flower (generateRandomColor());
             flowers.push(flower);
+            flower.draw(crc2);
         }
     }
     
